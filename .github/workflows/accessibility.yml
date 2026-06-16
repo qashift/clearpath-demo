@@ -1,0 +1,17 @@
+name: Accessibility
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  clearpath:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clearpath accessibility check
+        uses: qashift/clearpath-action@v1
+        with:
+          # Scans the live demo site (GitHub Pages). Point this at your own
+          # preview deployment for real per-PR diffs.
+          urls: https://qashift.github.io/clearpath-demo/
+          token: ${{ secrets.CLEARPATH_INGEST_TOKEN }}
